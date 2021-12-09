@@ -157,11 +157,11 @@ def Transfer(f_name, l_name):
                 change_sender_balance_due_to_transfer = open(f'C:/Users/{user}/Desktop/THE PROTON BANK/Users/{f_name} _ {l_name}/Database/Account Info/balance.txt', 'w').write(f'{new_sender_balance} Naira')
             else:
                 print('> You cannot transfer that sum of money because you do not have up to that in your account!')
-                print()
 
             #Transaction History For Recipient
             x = datetime.datetime.now()
-            transfer_history = f'-------------------------> \n-----> % Date: {x.strftime("%A, %d %B. %Y")} --> Time: {x.strftime("%I:%M%p")} % \n-----> Manner of transaction: Credit Transfer \n-----> Credit: {amount} Naira \n-----> Current Account Balance: {new_balance} Naira \n-------------------------> \n\n'
+            sender_account_number = open(f'C:/Users/{user}/Desktop/THE PROTON BANK/Users/{f_name} _ {l_name}/Database/Account Info/acc_num.txt', 'r').read()
+            transfer_history = f'-------------------------> \n-----> % Date: {x.strftime("%A, %d %B. %Y")} --> Time: {x.strftime("%I:%M%p")} % \n-----> Manner of transaction: Credit Transfer \n-----> Transfer From: {sender_account_number} - Account Name: {f_name} {l_name} \n-----> Credit: {amount} Naira \n-----> Current Account Balance: {new_balance} Naira \n-------------------------> \n\n'
             add_transation_to_sender_transaction_file = open(f'C:/Users/{user}/Desktop/THE PROTON BANK/Users/{i}/Database/Account Info/transaction history.txt', 'a').write(transfer_history)
             create_transaction_file =  open(f'C:/Users/{os.getlogin()}/Desktop/THE PROTON BANK/Users/{i}/Database/Account Info/Transactions/T-CREDIT-{x.strftime("%d-%b-%Y-%I-%M%p")}.txt', 'w').write(transfer_history)
 
